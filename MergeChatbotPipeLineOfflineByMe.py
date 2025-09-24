@@ -106,18 +106,25 @@ def chatbotPipeline(UserText):
     # i use for the debugging !!! 
     
     
-   #  print(f"[DEBUG] Classifier output: {label}, score: {score}")
+    print(f"[DEBUG] Classifier output: {label}, score: {score}")
+    THRESHOLD = 0.8 
+    CRITICAL_LABELS = ["suicidal", "suicidewatch", "depression", "stress", "anxiety"]
 
 
     # now if the output of the ai give suicidal depression etc words and the score more than the 0.7 than triger the alert which is the further process !!! 
-    if label.lower() in ["suicidal", "suicidewatch", "depression", "stress", "anxiety"] and  score > 0.7:
-        print(
-            f"Critical situation , it look like you may experience personal assistance and you were experiencing {label}. "
-            "You can call AASRA Helpline (India) at 9152987821 for support."
-        )
+    if label.lower() in CRITICAL_LABELS and score > THRESHOLD:
+     print(
+        f"Critical situation , it look like you may experience personal assistance and you were experiencing {label}. "
+        "You can call AASRA Helpline (India) at 9152987821 for support."
+    )
+     return None
 
         # return none so that sudicidal ai did not return anything !!!!! 
-        return None # dont return anything !!!!! 
+         # dont return anything !!!!! 
+   
+   
+    
+
     
     # if all things fine than continue with the chatting !!!! 
     return get_chat_response(UserText)
@@ -134,5 +141,3 @@ while True:
     if reply:
         print("Bot:", reply)
         
-
-
