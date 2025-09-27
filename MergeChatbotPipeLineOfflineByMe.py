@@ -34,8 +34,8 @@ load_dotenv()  # loads variables from .env
 # mental health classifier (change model if you prefer)
 mhClassifier = pipeline(
     "text-classification",
-    model="tahaenesaslanturk/mental-health-classification-v0.2",
-    token=HF_TOKEN
+    model="tahaenesaslanturk/mental-health-classification-v0.2"
+   
 
     # if authentacation is required than you can add you token !!!! :)  
 )
